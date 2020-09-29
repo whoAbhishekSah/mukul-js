@@ -1,0 +1,28 @@
+<html>
+  <head></head>
+  <body>
+    <h1 id="h1" onclick="f()">Hi There</h1>
+    <h2 id="h2">You clicked me:</h2>
+    <h3 id="h3">dfsdfs</h3>
+    <script>
+      let i = 0;
+      let urls = [
+        "https://api.github.com/users/anxmukul",
+        "https://api.github.com/users/whoabhisheksah",
+      ];
+      function f() {
+        console.log("clicked");
+        i++;
+        fetch(urls[i % 2]).then(g);
+        document.getElementById("h2").innerText = `You clicked me: ${i} times`;
+      }
+      function g(res) {
+        res.json().then(h);
+      }
+      function h(res) {
+        console.log("data fetch done", res);
+        document.getElementById("h3").innerText = JSON.stringify(res);
+      }
+    </script>
+  </body>
+</html>
